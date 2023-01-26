@@ -16,5 +16,6 @@ class Config:
     SESSION_NAME = os.environ.get("SESSION_NAME", "")
     DATABASE_URL = os.environ.get("DATABASE_URL", "")
     AUTH_CHANNEL = os.environ.get("AUTH_CHANNEL", "")
+    OWNERS = os.environ.get("OWNERS", "")
     BROADCAST_AS_COPY = bool(os.environ.get("BROADCAST_AS_COPY", True))
     
