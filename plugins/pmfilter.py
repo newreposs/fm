@@ -2,7 +2,7 @@ import os
 import re
 import io
 import pyrogram
-
+from pyrogram.types import Message
 from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 import contextlib
