@@ -6,6 +6,7 @@ import re
 from config import Config 
 from typing import List
 from pyrogram.types import InlineKeyboardButton
+from pyrogram.types import Message
 
 BTN_URL_REGEX = re.compile(
     r"(\[([^\[]+?)\]\((buttonurl|buttonalert):(?:/{0,2})(.+?)(:same)?\))"
