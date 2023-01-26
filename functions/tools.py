@@ -24,6 +24,33 @@ mydb = myclient[Config.SESSION_NAME]
 mycol = mydb['USERS']
 
 
+import logging
+
+LOG = logging.getLogger(__name__)
+
+class unicode_tr(str):
+    """usage: print unicode_tr("kitap").upper()
+    print unicode_tr("KİTAP").lower()"""
+    CHARMAP = {
+        "to_upper": {
+            u"ı": u"I",
+            u"i": u"İ",
+        },
+        "to_lower": {
+            u"I": u"ı",
+            u"İ": u"i",
+        }
+    }
+    def lower(self):
+        for key, value in self.CHARMAP.get("to_lower").items():
+            self = self.replace(key, value)
+        return self.lower()
+
+    def upper(self):
+        for key, value in self.CHARMAP.get("to_upper").items():
+            self = self.replace(key, value)
+        return self.upper()
+
 def get_file_id(msg: Message):
     if msg.media:
         for message_type in ("photo", "animation", "audio", "document", "video", "video_note", "voice", "sticker"):
