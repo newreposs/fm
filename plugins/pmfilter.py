@@ -17,7 +17,7 @@ from database.filters_helper import(
 )
 from pyrogram.enums import ParseMode
 from functions.tools import add_user, all_users
-
+from functions.tools import unicode_tr
 from functions.tools import parser, split_quotes, get_file_id 
 
 
