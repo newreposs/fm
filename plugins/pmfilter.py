@@ -33,95 +33,10 @@ async def addfilter(client, message):
     title = chat.first_name
         
 
+    
     if len(args) < 2:
         await message.reply_text("Komut Eksik :(", quote=True)
-        return
-    
-    extracted = split_quotes(args[1])
-    text = extracted[0].lower()
-   
-    if not message.reply_to_message and len(extracted) < 2:
-        await message.reply_text("Filtrenizi kaydetmek için bazı içerikler eklemelisin!", quote=True)
-        return
-
-    if (len(extracted) >= 2) and not message.reply_to_message:
-        reply_text, btn, alert = parser(extracted[1], text)
-        fileid = None
-        if not reply_text:
-            await message.reply_text("Tek başına butonlara sahip olamazsınız, onunla birlikte gitmek için biraz metin ver!", quote=True)
-            return
-
-    elif message.reply_to_message and message.reply_to_message.reply_markup:
-        try:
-            rm = message.reply_to_message.reply_markup
-            btn = rm.inline_keyboard
-            msg = message.reply_to_message.document or\
-                  message.reply_to_message.video or\
-                  message.reply_to_message.photo or\
-                  message.reply_to_message.audio or\
-                  message.reply_to_message.animation or\
-                  message.reply_to_message.sticker
-            if msg:
-                fileid = msg.file_id
-                reply_text = message.reply_to_message.caption.html
-            else:
-                reply_text = message.reply_to_message.text.html
-                fileid = None
-            alert = None
-        except:
-            reply_text = ""
-            btn = "[]" 
-            fileid = None
-            alert = None
-
-    elif message.reply_to_message and message.reply_to_message.photo:
-        try:
-            fileid = message.reply_to_message.photo.file_id
-            reply_text, btn, alert = parser(message.reply_to_message.caption.html, text)
-        except:
-            reply_text = ""
-            btn = "[]"
-            alert = None
-
-    elif message.reply_to_message and message.reply_to_message.video:
-        try:
-            fileid = message.reply_to_message.video.file_id
-            reply_text, btn, alert = parser(message.reply_to_message.caption.html, text)
-        except:
-            reply_text = ""
-            btn = "[]"
-            alert = None
-
-    elif message.reply_to_message and message.reply_to_message.audio:
-        try:
-            fileid = message.reply_to_message.audio.file_id
-            reply_text, btn, alert = parser(message.reply_to_message.caption.html, text)
-        except:
-            reply_text = ""
-            btn = "[]"
-            alert = None
-   
-    elif message.reply_to_message and message.reply_to_message.document:
-        try:
-            fileid = message.reply_to_message.document.file_id
-            reply_text, btn, alert = parser(message.reply_to_message.caption.html, text)
-        except:
-            reply_text = ""
-            btn = "[]"
-            alert = None
-
-    elif message.reply_to_message and message.reply_to_message.animation:
-        try:
-            fileid = message.reply_to_message.animation.file_id
-            reply_text, btn, alert = parser(message.reply_to_message.caption.html, text)
-        except:
-            reply_text = ""
-            btn = "[]"
-            alert = None
-if len(args) < 2:
-
-        return await message.reply_text("Ne yazdın anlamadım. Örnek: `/filter esenlikler size de esenlikler`", quote=True)
-
+        return 
     extracted = split_quotes(args[1])
     text = unicode_tr(extracted[0]).lower()
 
