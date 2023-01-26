@@ -38,7 +38,7 @@ async def addfilter(client, message):
         await message.reply_text("Komut Eksik :(", quote=True)
         return 
     extracted = split_quotes(args[1])
-    text = unicode_tr(extracted[0]).lower()
+    text = extracted
 
     if not message.reply_to_message and len(extracted) < 2:
         return await message.reply_text("Add some content to save your filter!", quote=True)
