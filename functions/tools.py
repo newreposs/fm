@@ -54,7 +54,7 @@ def unicode_tr(str):
 def get_file_id(msg: Message):
     if msg.media:
         for message_type in ("photo", "animation", "audio", "document", "video", "video_note", "voice", "sticker"):
-            if obj := getattr(msg, message_type):
+        if obj := getattr(msg, message_type):
             setattr(obj, "message_type", message_type)
             return obj
 
