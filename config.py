@@ -17,5 +17,6 @@ class Config:
     DATABASE_URL = os.environ.get("DATABASE_URL", "")
     AUTH_CHANNEL = os.environ.get("AUTH_CHANNEL", "")
     OWNERS = os.environ.get("OWNERS", "")
+    BOT_USERNAME = os.environ.get("BOT_USERNAME", "")
     BROADCAST_AS_COPY = bool(os.environ.get("BROADCAST_AS_COPY", True))
     
