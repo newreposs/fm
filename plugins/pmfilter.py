@@ -20,7 +20,12 @@ from functions.tools import add_user, all_users
 from functions.tools import unicode_tr
 from functions.tools import parser, split_quotes
 
-
+def get_file_id(msg: Message):
+    if msg.media:
+        for message_type in ("photo", "animation", "audio", "document", "video", "video_note", "voice", "sticker"):
+            if obj := getattr(msg, message_type):
+                setattr(obj, "message_type", message_type)
+                return obj
 
 @Client.on_message(filters.command('add') & filters.user(Config.OWNERS))
 async def addfilter(client, message):
@@ -53,12 +58,7 @@ async def addfilter(client, message):
         try:
             rm = message.reply_to_message.reply_markup
             btn = rm.inline_keyboard
-            msg = message.reply_to_message.document or\
-                  message.reply_to_message.video or\
-                  message.reply_to_message.photo or\
-                  message.reply_to_message.audio or\
-                  message.reply_to_message.animation or\
-                  message.reply_to_message.sticker
+            msg = get_file_id(message.reply_to_message)
             if msg:
                 fileid = msg.file_id
                 reply_text = message.reply_to_message.caption.html
