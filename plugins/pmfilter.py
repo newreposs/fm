@@ -19,7 +19,6 @@ from pyrogram.enums import ParseMode
 from functions.tools import add_user, all_users
 from functions.tools import unicode_tr
 from functions.tools import parser, split_quotes
-from functions.get_file_id import get_file_id 
 
 
 
