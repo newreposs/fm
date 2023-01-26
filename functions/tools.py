@@ -28,35 +28,12 @@ import logging
 
 LOG = logging.getLogger(__name__)
 
-def unicode_tr(str):
-    """usage: print unicode_tr("kitap").upper()
-    print unicode_tr("KİTAP").lower()"""
-    CHARMAP = {
-        "to_upper": {
-            u"ı": u"I",
-            u"i": u"İ",
-        },
-        "to_lower": {
-            u"I": u"ı",
-            u"İ": u"i",
-        }
-    }
-    def lower(self):
-        for key, value in self.CHARMAP.get("to_lower").items():
-            self = self.replace(key, value)
-        return self.lower()
-
-    def upper(self):
-        for key, value in self.CHARMAP.get("to_upper").items():
-            self = self.replace(key, value)
-        return self.upper()
-
 def get_file_id(msg: Message):
     if msg.media:
         for message_type in ("photo", "animation", "audio", "document", "video", "video_note", "voice", "sticker"):
-        if obj := getattr(msg, message_type):
-            setattr(obj, "message_type", message_type)
-            return obj
+            if obj := getattr(msg, message_type):
+                setattr(obj, "message_type", message_type)
+                return obj
 
 async def add_user(id, username, name, dcid):
     data = {
@@ -226,3 +203,28 @@ def ReadableTime(seconds: int) -> str:
     seconds = int(seconds)
     result += f'{seconds}s'
     return result
+
+
+def unicode_tr(str):
+    """usage: print unicode_tr("kitap").upper()
+    print unicode_tr("KİTAP").lower()"""
+    CHARMAP = {
+        "to_upper": {
+            u"ı": u"I",
+            u"i": u"İ",
+        },
+        "to_lower": {
+            u"I": u"ı",
+            u"İ": u"i",
+        }
+    }
+    def lower(self):
+        for key, value in self.CHARMAP.get("to_lower").items():
+            self = self.replace(key, value)
+        return self.lower()
+
+    def upper(self):
+        for key, value in self.CHARMAP.get("to_upper").items():
+            self = self.replace(key, value)
+        return self.upper()
+ 
