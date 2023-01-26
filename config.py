@@ -19,4 +19,5 @@ class Config:
     OWNERS = os.environ.get("OWNERS", "")
     BOT_USERNAME = os.environ.get("BOT_USERNAME", "")
     BROADCAST_AS_COPY = bool(os.environ.get("BROADCAST_AS_COPY", True))
+    SAVE_USER = "yes" 
     
