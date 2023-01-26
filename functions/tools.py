@@ -28,7 +28,7 @@ import logging
 
 LOG = logging.getLogger(__name__)
 
-class unicode_tr(str):
+def unicode_tr(str):
     """usage: print unicode_tr("kitap").upper()
     print unicode_tr("KİTAP").lower()"""
     CHARMAP = {
