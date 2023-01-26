@@ -198,7 +198,7 @@ def ReadableTime(seconds: int) -> str:
     return result
 
 
-def unicode_tr(str):
+Class unicode_tr(str):
     """usage: print unicode_tr("kitap").upper()
     print unicode_tr("KİTAP").lower()"""
     CHARMAP = {
