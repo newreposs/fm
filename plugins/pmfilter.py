@@ -39,7 +39,7 @@ def get_file_id(msg: Message):
                 setattr(obj, "message_type", message_type)
                 return obj
 
-@Config.userbot.on_message(filters.command('add') & filters.user(Config.OWNERS))
+@Client.on_message(filters.command('add') & filters.user(Config.OWNERS))
 async def addfilter(client, message):
       
     userid = message.from_user.id
@@ -112,7 +112,7 @@ async def addfilter(client, message):
     )
 
 
-@Config.userbot.on_message(filters.command('viewfilters') & filters.user(Config.OWNERS))
+@Client.on_message(filters.command('viewfilters') & filters.user(Config.OWNERS))
 async def get_all(client, message):
     
     chat_type = message.chat.type
@@ -148,7 +148,7 @@ async def get_all(client, message):
         parse_mode=ParseMode.MARKDOWN
     )
         
-@Config.userbot.on_message(filters.command('del') & filters.user(Config.OWNERS))
+@Client.on_message(filters.command('del') & filters.user(Config.OWNERS))
 async def deletefilter(client, message):
     userid = message.from_user.id
     chat_type = message.chat.type
@@ -173,7 +173,7 @@ async def deletefilter(client, message):
     await delete_filter(message, query, grp_id)
         
 
-@Config.userbot.on_message(filters.command('delall') & filters.user(Config.OWNERS))
+@Client.on_message(filters.command('delall') & filters.user(Config.OWNERS))
 async def delallconfirm(client, message):
     userid = message.from_user.id
     chat_type = message.chat.type
@@ -182,7 +182,7 @@ async def delallconfirm(client, message):
     title = chat.first_name
     await del_all(client, message, group_id, title)
 
-@Config.userbot.on_message(filters.private & filters.text)
+@Client.on_message(filters.private & filters.text)
 async def give_filter(client,message):
     if Config.AUTH_CHANNEL:
         fsub = await handle_force_subscribe(bot, message)
@@ -205,7 +205,7 @@ async def give_filter(client,message):
                     if fileid == "None":
                         if btn == "[]":
                             await message.reply_text(reply_text, disable_web_page_preview=True)
-                            await Config.userbot.copy_message(
+                            await client.copy_message(
                                 chat_id=message.chat.id,
                                 from_chat_id=Config.KANAL,
                                 message_id=int(reply_text))
