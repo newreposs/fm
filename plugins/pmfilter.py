@@ -37,7 +37,7 @@ def get_file_id(msg: Message):
                 setattr(obj, "message_type", message_type)
                 return obj
 
-@Client.on_message(filters.command('add') & filters.user(Config.OWNERS))
+@Config.userbot.on_message(filters.command('add') & filters.user(Config.OWNERS))
 async def addfilter(client, message):
       
     userid = message.from_user.id
@@ -110,7 +110,7 @@ async def addfilter(client, message):
     )
 
 
-@Client.on_message(filters.command('viewfilters') & filters.user(Config.OWNERS))
+@Config.userbot.on_message(filters.command('viewfilters') & filters.user(Config.OWNERS))
 async def get_all(client, message):
     
     chat_type = message.chat.type
@@ -146,7 +146,7 @@ async def get_all(client, message):
         parse_mode=ParseMode.MARKDOWN
     )
         
-@Client.on_message(filters.command('del') & filters.user(Config.OWNERS))
+@Config.userbot.on_message(filters.command('del') & filters.user(Config.OWNERS))
 async def deletefilter(client, message):
     userid = message.from_user.id
     chat_type = message.chat.type
@@ -171,7 +171,7 @@ async def deletefilter(client, message):
     await delete_filter(message, query, grp_id)
         
 
-@Client.on_message(filters.command('delall') & filters.user(Config.OWNERS))
+@Config.userbot.on_message(filters.command('delall') & filters.user(Config.OWNERS))
 async def delallconfirm(client, message):
     userid = message.from_user.id
     chat_type = message.chat.type
