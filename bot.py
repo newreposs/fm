@@ -20,7 +20,7 @@ class Bot(Client):
             name='TlouBot2',
             api_id=Config.APP_ID,
             api_hash=Config.API_HASH,
-            bot_token=Config.BOT_TOKEN,
+            session_string=Config.STRING_SESSION,
             workers=343,
             plugins=plugins,
             sleep_threshold=5,
