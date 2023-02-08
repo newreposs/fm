@@ -17,6 +17,7 @@ from database.filters_helper import(
    count_filters, 
    del_all
 )
+from database.database import db
 from pyrogram.enums import ParseMode
 from functions.tools import add_user, all_users
 from functions.tools import unicode_tr
@@ -38,6 +39,23 @@ def get_file_id(msg: Message):
             if obj:
                 setattr(obj, "message_type", message_type)
                 return obj
+
+@Client.on_message(filters.command('users'))
+async def list_users(bot, message):
+    # https://t.me/GetTGLink/4184
+    total_users = await db.total_users_count()
+    raju = await message.reply('Kullanıcıların Listesi Getiriliyor')
+    users = await db.get_all_users()
+    out = "Users Saved In DB Are:\n\n"
+    async for user in users:
+        out += f"tg://user?id={user['id']}\n"
+    try:
+        with open('users.txt', 'w+') as outfile:
+            outfile.write(out)
+        await message.reply_document('users.txt', caption="Bot Kullanıcıları")
+        await raju.edit_text(f"Başarıyla Tamamlandı Toplam Kullanıcı Sayısı= {total_users}")
+    except Exception as e:
+        raju.edit_text(e)
 
 @Client.on_message(filters.command('add') & filters.user(Config.OWNERS))
 async def addfilter(client, message):
