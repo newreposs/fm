@@ -3,6 +3,8 @@ import re
 import io
 import pyrogram
 
+from functions.forcesub import handle_force_subscribe
+
 from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram.types import Message
@@ -182,6 +184,10 @@ async def delallconfirm(client, message):
 
 @Config.userbot.on_message(filters.private & filters.text)
 async def give_filter(client,message):
+    if Config.AUTH_CHANNEL:
+        fsub = await handle_force_subscribe(bot, message)
+        if fsub == 400:
+            return
     group_id = Config.BOT_USERNAME
     name = message.text
 
