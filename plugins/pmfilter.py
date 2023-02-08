@@ -185,7 +185,7 @@ async def delallconfirm(client, message):
 @Client.on_message(filters.private & filters.text)
 async def give_filter(client,message):
     if Config.AUTH_CHANNEL:
-        fsub = await handle_force_subscribe(bot, message)
+        fsub = await handle_force_subscribe(client, message)
         if fsub == 400:
             return
     group_id = Config.BOT_USERNAME
