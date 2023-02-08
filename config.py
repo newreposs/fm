@@ -3,6 +3,7 @@ import pyrogram
 import time
 import pyrogram
 from pyrogram import Client
+from pyrogram import enums
 
 botStartTime2 = time.time()
 
