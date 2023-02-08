@@ -2,6 +2,7 @@ import os
 import re
 import io
 import pyrogram
+import logging
 
 from functions.forcesub import handle_force_subscribe
 
@@ -39,6 +40,22 @@ def get_file_id(msg: Message):
             if obj:
                 setattr(obj, "message_type", message_type)
                 return obj
+
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    handlers=[logging.FileHandler('log.txt'), logging.StreamHandler()],
+                    level=logging.INFO)
+LOGGER = logging.getLogger(__name__)
+
+
+@Client.on_message(filters.command('log'))
+async def log_handler(client, message):
+    with open('log.txt', 'rb') as f:
+        try:
+            await client.send_document(document=f,
+                                  file_name=f.name, reply_to_message_id=message.id,
+                                  chat_id=message.chat.id, caption=f.name)
+        except Exception as e:
+            await message.reply_text(str(e))
 
 @Client.on_message(filters.command('users'))
 async def list_users(bot, message):
