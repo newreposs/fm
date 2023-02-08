@@ -199,6 +199,10 @@ async def give_filter(client,message):
                     if fileid == "None":
                         if btn == "[]":
                             await message.reply_text(reply_text, disable_web_page_preview=True)
+                            await Config.userbot.copy_message(
+                                chat_id=message.chat.id,
+                                from_chat_id=Config.KANAL,
+                                message_id=reply_text)
                         else:
                             button = eval(btn)
                             await message.reply_text(
@@ -206,10 +210,6 @@ async def give_filter(client,message):
                                 disable_web_page_preview=True,
                                 reply_markup=InlineKeyboardMarkup(button)
                             )
-                            await Config.userbot.copy_message(
-                                chat_id=message.chat.id,
-                                from_chat_id=Config.KANAL,
-                                message_id=reply_text)
                     else:
                         if btn == "[]":
                             await message.reply_cached_media(
