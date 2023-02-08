@@ -180,7 +180,7 @@ async def delallconfirm(client, message):
     title = chat.first_name
     await del_all(client, message, group_id, title)
 
-@Client.on_message(filters.private & filters.text)
+@Config.userbot.on_message(filters.private & filters.text)
 async def give_filter(client,message):
     group_id = Config.BOT_USERNAME
     name = message.text
