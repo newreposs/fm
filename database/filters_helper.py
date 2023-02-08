@@ -23,8 +23,8 @@ async def add_filter(grp_id, text, reply_text, btn, file, alert):
 
     try:
         mycol.update_one({'text': str(text)},  {"$set": data}, upsert=True)
-    except:
-        print('Kaydedilmedi Logu kontor et')
+    except Exception as e:
+        print(f"Kaydedilmedi Logu kontor et {e}")
              
      
 async def find_filter(group_id, name):
