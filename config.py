@@ -1,7 +1,8 @@
 import os
 import pyrogram 
 import time
-
+import pyrogram
+from pyrogram import Client
 
 botStartTime2 = time.time()
 
