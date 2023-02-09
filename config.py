@@ -18,7 +18,7 @@ class Config:
     SESSION_NAME = os.environ.get("SESSION_NAME", "")
     DATABASE_URL = os.environ.get("DATABASE_URL", "")
     AUTH_CHANNEL = os.environ.get("AUTH_CHANNEL", "")
-    OWNERS = list(set(int(x) for x in os.environ.get("OWNERS", "1276627253").split()))
+    OWNERS = list(set(x for x in os.environ.get("OWNERS", "1276627253").split()))
     BOT_USERNAME = os.environ.get("BOT_USERNAME", "")
     BROADCAST_AS_COPY = bool(os.environ.get("BROADCAST_AS_COPY", True))
     SAVE_USER = "yes" 
