@@ -7,7 +7,7 @@ from pyrogram import enums
 import re
 import logging
 import logging.config
-
+import requests
 import logging
 
 logging.basicConfig(
