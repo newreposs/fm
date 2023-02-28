@@ -9,7 +9,7 @@ import logging
 import logging.config
 import requests
 import logging
-
+from dotenv import load_dotenv
 logging.basicConfig(
     format='%(name)s - %(levelname)s - %(message)s',
     handlers=[logging.FileHandler('log.txt'),
