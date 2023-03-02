@@ -303,4 +303,4 @@ async def give_filter(client,message):
             pass
       
 app = web.AppRunner(web_server())
-await app.setup()
+app.setup()
