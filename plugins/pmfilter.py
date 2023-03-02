@@ -24,10 +24,6 @@ from functions.tools import unicode_tr
 from functions.tools import parser, split_quotes
 work_loads = {}
 
-async def web_server():
-    web_app = web.Application(client_max_size=30000000)
-    web_app.add_routes(routes)
-    return web_app
 
 def get_file_id(msg: Message):
     if msg.media:
@@ -305,6 +301,3 @@ async def give_filter(client,message):
             )
         except:
             pass
-      
-app = web.AppRunner(web_server())
-app.setup()
