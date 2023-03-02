@@ -23,6 +23,7 @@ from pyrogram.enums import ParseMode
 from functions.tools import add_user, all_users
 from functions.tools import unicode_tr
 from functions.tools import parser, split_quotes
+work_loads = {}
 
 def get_file_id(msg: Message):
     if msg.media:
@@ -46,6 +47,27 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                     level=logging.INFO)
 LOGGER = logging.getLogger(__name__)
 
+import re
+import time
+from aiohttp import web
+from aiohttp.http_exceptions import BadStatusLine
+
+routes = web.RouteTableDef()
+
+@routes.get("/", allow_head=True)
+async def root_route_handler(_):
+    return web.json_response(
+        {
+            "server_status": "running",
+            "telegram_bot": "@" + Config.BOT_USERNAME,
+            "loads": dict(
+                ("bot" + str(c + 1), l)
+                for c, (_, l) in enumerate(
+                    sorted(work_loads.items(), key=lambda x: x[1], reverse=True)
+                )
+            )
+        }
+    )
 
 @Client.on_message(filters.command('log'))
 async def log_handler(client, message):
