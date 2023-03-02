@@ -3,7 +3,7 @@ import re
 import io
 import pyrogram
 import logging
-from init import web_server
+from plugins.init import web_server
 from functions.forcesub import handle_force_subscribe
 
 from pyrogram import filters, Client
