@@ -34,7 +34,7 @@ async def handle_force_subscribe(client, message):
         pass
         date = start_time + timedelta(seconds=120)
         try:
-            invite_link = await client.create_chat_invite_link(chat_id=Config.AUTH_CHANNEL, creates_join_request=True)
+            invite_link = await client.create_chat_invite_link(chat_id=Config.AUTH_CHANNEL, creates_join_request=True, expire_date=60)
         except ChatAdminRequired:
             LOGGER.error("Bot'un Forcesub kanalında yönetici olduğundan emin olun.")
             return
