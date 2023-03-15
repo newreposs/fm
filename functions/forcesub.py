@@ -47,7 +47,7 @@ async def handle_force_subscribe(client, message):
         ]
         await client.send_message(
             chat_id=user_id,
-            text=f"Sana Yardımcı Olabilmem İçin Kanalıma Katılman Gerekir Lütfen katıldıktan sonra dizinin/filmin ismini tekrar gönder.\n\n{invite_link.invite_link}",
+            text=f"Sana Yardımcı Olabilmem İçin Kanalıma Katılman Gerekir Lütfen Katıldıktan Sonra Dizinin/Filmin İsmini Tekrar Gönder.\n\n{invite_link.invite_link}",
             reply_markup=InlineKeyboardMarkup(btn),
             reply_to_message_id=message.id,
         )
