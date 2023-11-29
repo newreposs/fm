@@ -67,7 +67,7 @@ class Config:
     SESSION_NAME = os.environ.get("SESSION_NAME", "dizi")
     DATABASE_URL = os.environ.get("DATABASE_URL", "mongodb+srv://hplatformss:hplatformss@cluster0.chcsk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
     AUTH_CHANNEL = int(os.environ.get("AUTH_CHANNEL", "-1001627063671"))
-    OWNERS = list(set(x for x in os.environ.get("OWNERS", "1600088232").split()))
+    OWNERS = list(set(x for x in os.environ.get("OWNERS", "ahmet118").split()))
     BOT_USERNAME = os.environ.get("BOT_USERNAME", "diziadmin")
     BROADCAST_AS_COPY = bool(os.environ.get("BROADCAST_AS_COPY", True))
     SAVE_USER = "yes" 
