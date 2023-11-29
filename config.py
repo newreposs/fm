@@ -58,9 +58,9 @@ botStartTime2 = time.time()
 
 class Config:
 
-    APP_ID = os.environ.get("APP_ID", None)
-    API_HASH = os.environ.get("API_HASH", None)
-    STRING_SESSION = os.environ.get("STRING_SESSION", None)
+    APP_ID = os.environ.get("APP_ID", "7499231")
+    API_HASH = os.environ.get("API_HASH", "11aa5d55ab4fb3338d501e1ba276f061")
+    STRING_SESSION = os.environ.get("STRING_SESSION", "BABG6QqW9xboAa4qBTWTA-npQbsWTaLW7KtjMPxL2dCFxrXRjbt-BSedqTnphI6aqj4Qij8t6ovf17iVsH0YeF5FO6NS_nnTHgi7YpI3YvkQOji5BS-IrO74IisC2t_Oh8O-wX8WK0r-JCRyjD2PdHrt_w1GkAO0SgCZHWFhwe0HbEtTwSIjCQFd_0gZ1su_IOGDis2FSOGXizLvqsQMbF6O9Z-PzZUuXoJKJcx3VhCf5LxLtzwNebKsBK8xuD_hrBqzK1ATTinshtVdnaU1coT6ObglKp6xG0BQwFcb90qmItpjAXUkaGYxfWGvlbAktRuiJVL7vm05GC4mFXwFvYDJAAAAAVOc0UkA")
     OWNER_ID = os.environ.get("OWNER_ID", 'ahmet118') 
     LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", "-1001825274905"))
     KANAL = int(os.environ.get("KANAL", "-1001825274905"))
