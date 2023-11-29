@@ -79,7 +79,7 @@ async def log_handler(client, message):
         except Exception as e:
             await message.reply_text(str(e))
 
-@Client.on_message(filters.command('users'))
+@Client.on_message(filters.command('kimler'))
 async def list_users(bot, message):
     # https://t.me/GetTGLink/4184
     total_users = await db.total_users_count()
@@ -96,7 +96,7 @@ async def list_users(bot, message):
     except Exception as e:
         raju.edit_text(e)
 
-@Client.on_message(filters.command('add') & filters.user(Config.OWNERS))
+@Client.on_message(filters.command('ekle') & filters.user(Config.OWNERS))
 async def addfilter(client, message):
       
     userid = message.from_user.id
@@ -169,7 +169,7 @@ async def addfilter(client, message):
     )
 
 
-@Client.on_message(filters.command('viewfilters') & filters.user(Config.OWNERS))
+@Client.on_message(filters.command('tüm') & filters.user(Config.OWNERS))
 async def get_all(client, message):
     
     chat_type = message.chat.type
@@ -205,7 +205,7 @@ async def get_all(client, message):
         parse_mode=ParseMode.MARKDOWN
     )
         
-@Client.on_message(filters.command('del') & filters.user(Config.OWNERS))
+@Client.on_message(filters.command('sil') & filters.user(Config.OWNERS))
 async def deletefilter(client, message):
     userid = message.from_user.id
     chat_type = message.chat.type
@@ -219,8 +219,8 @@ async def deletefilter(client, message):
     except:
         await message.reply_text(
             "<i>Silmek istediğiniz filtre adını belirtin!</i>\n\n"
-            "<code>/del filterismi</code>\n\n"
-            "Tüm filterları görmek için /viewfilters ı kulan!",
+            "<code>/sil filterismi</code>\n\n"
+            "Tüm filterları görmek için /tüm ü kulan!",
             quote=True
         )
         return
@@ -230,7 +230,7 @@ async def deletefilter(client, message):
     await delete_filter(message, query, grp_id)
         
 
-@Client.on_message(filters.command('delall') & filters.user(Config.OWNERS))
+@Client.on_message(filters.command('hepsinisil') & filters.user(Config.OWNERS))
 async def delallconfirm(client, message):
     userid = message.from_user.id
     chat_type = message.chat.type
