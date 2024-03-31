@@ -2,7 +2,7 @@ import logging, pyrogram
 from pyrogram import filters, Client, enums
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from database.database import db
-from configs import OWNERS
+from config import OWNERS
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.ERROR)
