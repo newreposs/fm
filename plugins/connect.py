@@ -1,7 +1,7 @@
 import logging, pyrogram 
 from pyrogram import filters, Client, enums
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from FilterBot.database import db
+from database.database import db
 from configs import OWNERS
 
 logger = logging.getLogger(__name__)
