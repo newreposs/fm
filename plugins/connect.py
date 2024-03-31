@@ -2,7 +2,7 @@ import logging, pyrogram
 from pyrogram import filters, Client, enums
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from database.database import db
-from config import OWNERS
+from config import OWNER_ID
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.ERROR)
@@ -34,7 +34,7 @@ async def addconnection(client, message):
         if (
                 st.status != enums.ChatMemberStatus.ADMINISTRATOR
                 and st.status != enums.ChatMemberStatus.OWNER
-                and userid not in ADMINS
+                and userid not in OWNER_ID
         ):
             await message.reply_text("You should be an admin in Given group!", quote=True)
             return
@@ -95,7 +95,7 @@ async def deleteconnection(client, message):
         if (
                 st.status != enums.ChatMemberStatus.ADMINISTRATOR
                 and st.status != enums.ChatMemberStatus.OWNER
-                and str(userid) not in ADMINS
+                and str(userid) not in OWNER_ID
         ):
             return
 
